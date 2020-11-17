@@ -4,6 +4,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.constraints.Size;
+
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 public class User {
@@ -11,10 +14,13 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Length(max=20)
     private String firstName;
 
+    @Length(min=2)
     private String lastName;
 
+    @Size(min=4, max=20)
     private String state;
 
     public User(Long id, String firstName, String lastName, String state) {
